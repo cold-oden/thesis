@@ -1,0 +1,189 @@
+% !TEX root = main.tex
+%////////////////////////////////////////////////////////
+\begin{center}
+\section*{\kintou{2.5zw}{付録}}                      %% ここに番号をつけない
+\vspace*{-2zh}
+\end{center}
+\addcontentsline{toc}{section}{付録} %% 目次に番号をつけない
+\input{appendix.sty}
+%////////////////////////////////////////////////////////
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{ちちち}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+　以下に，本研究で使用したArduino用のC++プログラムを示す．
+\begin{lstlisting}
+    #include <Wire.h>
+#include <SD.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+#define PWM 9
+#define VMAX 15.0f
+#define RESISTER 18.37
+
+double T=0.0327438; //実行時間
+double e_pre = 0.0; // 微分の近似計算のための初期値
+double de = 0.0; 
+double ie = 0.0;    // 積分の近似計算のための初期値
+const int analogWriteStep = 255;
+int dutyRatio = 80; //duty比[%]
+double angle[3]={-1000,-1000,-1000};
+double magne[3]={-1000,-1000,-1000};
+double gyro[3]={-1000,-1000,-1000};
+double bdot[3]={0,0,0};
+unsigned long int time;
+const int chipSelect = 10;
+double kb = 0.00005;
+double kp = 0.007;
+double kd = 0.004;
+double ki = 0.001;
+double current = 0;
+double voltage = 0;
+//string型宣言
+String datastr = "";
+// Check I2C device address and correct line below (by default address is 0x29 or 0x28)
+//                                   id, address
+Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
+
+void setup(void)
+{
+  pinMode(10, OUTPUT);
+  pinMode(9,OUTPUT);
+  Serial.begin(115200);
+  Serial.println("Orientation Sensor Test"); Serial.println("");
+  //センサの初期化
+  if (!bno.begin())
+  {
+    /* There was a problem detecting the BNO055 ... check your connections */
+    Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
+    while (1);
+  }
+  //SDカードの初期化
+  if (!SD.begin(chipSelect)) {
+    Serial.println("SD card initialization failed!");
+    while (1); // 初期化に失敗したら停止
+  }
+  Serial.println("initialization done.");
+}
+
+void loop(void){
+  //could add VECTOR_ACCELEROMETER, VECTOR_MAGNETOMETER,VECTOR_GRAVITY...
+  sensors_event_t orientationData , angVelocityData , linearAccelData, magnetometerData, accelerometerData, gravityData;
+  bno.getEvent(&orientationData, Adafruit_BNO055::VECTOR_EULER);
+  bno.getEvent(&angVelocityData, Adafruit_BNO055::VECTOR_GYROSCOPE);
+  bno.getEvent(&linearAccelData, Adafruit_BNO055::VECTOR_LINEARACCEL);
+  bno.getEvent(&magnetometerData, Adafruit_BNO055::VECTOR_MAGNETOMETER);
+  bno.getEvent(&accelerometerData, Adafruit_BNO055::VECTOR_ACCELEROMETER);
+  bno.getEvent(&gravityData, Adafruit_BNO055::VECTOR_GRAVITY);
+
+  //センサの値を取得
+  returnEvent(&orientationData,angle);
+  returnEvent(&magnetometerData,magne);
+  returnEvent(&angVelocityData,gyro);
+
+  //Bdot制御則の計算
+  bdot[0]=magne[1]*gyro[2]-magne[2]*gyro[1];
+  bdot[1]=magne[0]*gyro[2]-magne[2]*gyro[0];
+  bdot[2]=magne[0]*gyro[1]-magne[1]*gyro[0];
+
+  //目標角度を0[deg]とする
+  double e = angle[0];
+  if(e > 270){
+    e = abs(e - 360);
+  }
+  de = (e - e_pre)/T;  
+  ie = ie + (e + e_pre)*T/2;
+
+  //B-dotならコメントアウト
+  current = kp*e + ki*ie + kd*de;
+  //PIDならコメントアウト
+  // current = kb*bdot[0]/0.04935;
+
+  //算出した電流値を電圧値に変換
+  voltage = current * RESISTER;
+  if(abs(voltage) > VMAX) {
+    voltage = VMAX;
+  }
+  //電圧値をduty比に変換
+  int duty = int(abs((voltage / 15.0) * 100.0));
+  Serial.print(duty);
+
+  int ledBrightness = analogWriteStep * duty / 100.0f;
+  analogWrite( 9, ledBrightness );
+
+  //値をstring型に
+  datastr = String(angle[0]);
+  for (int i = 0; i < 3; i++){
+    datastr += ","+String(magne[i]);
+  }
+  datastr += ","+String(gyro[2]);
+  //csvファイルのopen
+  File angFile = SD.open("LOG.CSV", FILE_WRITE);
+  //書き込み
+  if (angFile) {
+    angFile.println(datastr);
+    angFile.close(); // ファイルを閉じる
+    Serial.println("Write successful.");
+  } else {
+    Serial.println("Error opening test.txt for writing.");
+  }
+  e_pre = e;
+}
+
+//センサの値を返す
+void returnEvent(sensors_event_t* event,double tmp[3]) {
+  double x = -1000000, y = -1000000 , z = -1000000; //dumb values, easy to spot problem
+  if (event->type == SENSOR_TYPE_ACCELEROMETER) {
+    Serial.print("Accl:");
+    x = event->acceleration.x;
+    y = event->acceleration.y;
+    z = event->acceleration.z;
+  }
+  else if (event->type == SENSOR_TYPE_ORIENTATION) {
+    // Serial.print("orient:");
+    x = event->orientation.x;
+    y = event->orientation.y;
+    z = event->orientation.z;
+  }
+  else if (event->type == SENSOR_TYPE_MAGNETIC_FIELD) {
+    // Serial.print("Mag:");
+    x = event->magnetic.x;
+    y = event->magnetic.y;
+    z = event->magnetic.z;
+  }
+  else if (event->type == SENSOR_TYPE_GYROSCOPE) {
+    // Serial.print("Gyro:");
+    x = event->gyro.x;
+    y = event->gyro.y;
+    z = event->gyro.z;
+  }
+  else if (event->type == SENSOR_TYPE_ROTATION_VECTOR) {
+    Serial.print("Rot:");
+    x = event->gyro.x;
+    y = event->gyro.y;
+    z = event->gyro.z;
+  }
+  else if (event->type == SENSOR_TYPE_LINEAR_ACCELERATION) {
+    Serial.print("Linear:");
+    x = event->acceleration.x;
+    y = event->acceleration.y;
+    z = event->acceleration.z;
+  }
+  else if (event->type == SENSOR_TYPE_GRAVITY) {
+    Serial.print("Gravity:");
+    x = event->acceleration.x;
+    y = event->acceleration.y;
+    z = event->acceleration.z;
+  }
+  else {
+    Serial.print("Unk:");
+  }
+
+  tmp[0]=x;
+  tmp[1]=y;
+  tmp[2]=z;
+}
+
+
+\end{lstlisting}

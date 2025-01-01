@@ -1,0 +1,428 @@
+%%% 特別研究論文スタイルファイル thesis.sty (ver.1.0, 2018.10.25)
+
+%%%
+%%% margin set
+%%%
+% \oddsidemargin  -0.25cm		% 奇数番号ページの左マージン
+% \evensidemargin -0.25cm		% 偶数番号ページの左マージン
+\oddsidemargin  0cm		% 奇数番号ページの左マージン
+\evensidemargin 0cm		% 偶数番号ページの左マージン
+\topmargin -1.25cm			% ページの上端と本文の間隔
+%\textwidth 38zw			% 本文の横幅
+\textwidth 44zw			% 本文の横幅
+\parindent 0cm			% 改行後の先頭文字の空白
+%\mathindent 1.6zw		% 数式の左からの間隔
+
+%%%
+%%% section-title-font set
+%%%
+\def\section{
+  \@startsection{section}{1}{\z@}
+  {3ex plus1ex minus.2ex}{8ex plus .2ex}{\huge\bf}}
+\def\subsection{
+  \@startsection{subsection}{2}{\z@}
+  {3ex plus1ex minus.2ex}{1.5ex plus .2ex}{\Large\bf}}
+\def\subsubsection{
+  \@startsection{subsubsection}{2}{\z@}
+  {3ex plus1ex minus.2ex}{1.5ex plus .2ex}{\large\bf}}
+
+
+%%% 参考文献
+\def\thebibliography#1{
+\list	  
+ {{\arabic{enumi}})}{\settowidth\labelwidth{{#1})}\leftmargin\labelwidth
+ \advance\leftmargin\labelsep
+ \usecounter{enumi}}
+ \def\newblock{\hskip .11em plus .33em minus .07em}
+ \sloppy
+ \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+
+
+%%%%%%%%%%%%%%%
+\input{cite.sty}	% cite.sty
+
+\renewcommand\citeform[1]{#1)} % parenthesized numbers [(1)-(5)]
+\def\@cite#1#2{$^{\mbox{\scriptsize{#1\if@tempswa , #2\fi}}}$}
+
+
+\let\org@cite\@cite
+\def\cite{\@ifnextchar[% ]
+ {\@tempswatrue\let\@cite\org@cite\@citex}
+ {\@tempswafalse\let\@cite\org@cite\@citex[]}}
+\def\Cite{\@ifnextchar[% ]
+ {\@tempswatrue\let\@cite\@Cite\@citex}
+ {\@tempswafalse\let\@cite\@Cite\@citex[]}}
+
+\def\@Cite#1#2{\leavevmode %% \unskip
+  \ifnum\lastpenalty=\z@\penalty\@highpenalty\fi% highpenalty before
+  {\multiply\@highpenalty 3 #1%             % triple-highpenalties within
+      \if@tempswa,\penalty\@highpenalty\ #2\fi % and before note.%(
+    }\spacefactor\@m}
+    
+\def\scite{\@ifnextchar[% ]
+ {\@tempswatrue\let\@cite\@scite\@citex}
+ {\@tempswafalse\let\@cite\@scite\@citex[]}}
+\def\@scite#1#2{\,$^{\mbox{\tiny{#1\if@tempswa , #2\fi}}}$}
+
+%%%%%%%%%%%%%%%
+
+\let\endthebibliography=\endlist
+
+%%% 文字の均等割付
+\newcommand{\kintou}[2]{%
+\leavevmode
+\hbox to #1{%
+\kanjiskip=0pt plus 1fill minus 1fill
+\xkanjiskip=\kanjiskip
+#2}}
+
+
+%%%
+%%% headline style set
+%%%
+\def\headline#1{
+  \section*{\hskip-.5em 【#1】}
+  \setcounter{section}{0}}
+
+%%%
+%%% page-style set
+%%%
+\mark{{}{}}
+\def\ps@plain{
+  \def\@oddhead{}
+  \def\@evenhead{}
+  \def\@oddfoot{\hbox{}\hfil{\rm ---\ \thepage\ ---}\hfil}
+  \def\@evenfoot{\hbox{}\hfil{\rm ---\ \thepage\ ---}\hfil}
+  \def\sectionmark##1{}
+  \def\subsectionmark##1{}}
+\ps@plain
+  \pagenumbering{arabic}
+  \onecolumn
+  \if@twoside
+  \else
+    \raggedbottom
+  \fi
+
+%%%
+%%% initialize for use
+%%%
+\sloppy
+\flushbottom
+\pagestyle{plain}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%脚注 の変更
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\footnoterule{%                                 脚注の上の線
+  \kern -3\p@%
+%%%  \hrule width .4\columnwidth%
+  \hrule width 0.3\textwidth%             罫線を引く
+  \kern 2.6\p@}%
+\@addtoreset{footnote}{chapter}%
+%%
+\long\def\@makefntext#1{%                 脚注そのものを出力する命令
+\advance\leftskip by 2.5zw%
+\parindent 0zw%
+\noindent%
+%%\hbox to 2zw{\hss $^{\@thefnmark}$}#1}%
+%\llap{$^{*{\@thefnmark}}\,$}#1}%
+%\llap{$^{注\,{\@thefnmark}}\,$}#1}%
+\llap{$^{(注\,{\@thefnmark})}\,$}#1}%
+
+%\def\thefootnote{\fnsymbol{footnote}}
+%\def\@makefnmark{\hbox{$^{*{\@thefnmark}}\,$}}
+%\def\@makefnmark{\hbox{$^{注\,{\@thefnmark}}\,$}}
+\def\@makefnmark{\hbox{$^{(注\,{\@thefnmark})}\,$}}
+\let\footnotesave=\footnote%%
+\def\footnote{\inhibitglue\footnotesave%%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% 数式の設定 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 分数のカスタマイズ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\dfrac#1#2{\displaystyle{\frac{\raisebox{-0.115zh}{$\hspace{0.1zw}#1\hspace{0.1zw}$}}{\raisebox{0.zh}{$\hspace{0.1zw}#2\hspace{0.1zw}$}}}} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ボールドイタリックにするコマンド
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bm}[1]{\mbox{\boldmath \it $#1$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 枠有りリターンキー
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\returna}{\raisebox{-2pt}{
+	\setlength{\unitlength}{1pt}
+	\thinlines
+	\begin{picture}(8,8)
+		\put(5,3){\line(0,1){5}}
+		\put(5,3){\vector(-1,0){7}}
+		\put(-4,2){\line(0,1){6}}
+		\put(7,2){\line(0,1){6}}
+		\put(1.5,8){\oval(11,4)[t]}
+		\put(1.5,2){\oval(11,4)[b]}
+	\end{picture}
+	}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 枠なしリターンキー
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\returnb}{\raisebox{-2pt}{
+	\setlength{\unitlength}{1pt}
+	\thinlines
+	\begin{picture}(8,8)
+		\put(5,3){\line(0,1){5}}
+		\put(5,3){\vector(-1,0){7}}
+	\end{picture}
+	}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ○で囲んだ数字
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newcommand{\maru}[1]{\ooalign{
+% \hfil\resizebox{.8\width}{\height}{#1}\hfil
+% \crcr
+% \raise.1ex\hbox{\large$\bigcirc$}}}
+
+\def\maru#1{{\ooalign{\hfil%#1 の代わりに以下を追加
+  \ifnum#1>999 \raisebox{0.1ex}{\resizebox{.25\width}{.85\height}{#1}}\else%
+  \ifnum#1>99  \raisebox{0.1ex}{\resizebox{.33\width}{.85\height}{#1}}\else%
+  \ifnum#1>9   \raisebox{0.1ex}{\resizebox{.5\width}{.85\height}{#1}}\else%
+               \raisebox{0.1ex}{\resizebox{\width}{.85\height}{#1}}%
+  \fi\fi\fi%
+\/\hfil\crcr%
+\raise.167ex\hbox{\mathhexbox20D}}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%\sfで和文もゴシックに%%%
+\DeclareRobustCommand\sffamily
+        {\not@math@alphabet\sffamily\mathsf
+         \romanfamily\sfdefault\kanjifamily\gtdefault\selectfont}
+\DeclareRobustCommand\ttfamily
+        {\not@math@alphabet\ttfamily\mathtt
+         \romanfamily\ttdefault\kanjifamily\gtdefault\selectfont}
+%    \end{macrocode}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 上下中央の点線 dotfill
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newcommand{\cdotfill}[1]{%
+%     \leavevmode
+%     \cleaders \hb@xt@#1{\hss$\cdot\m@th$\hss }\hfill \kern \z@
+% }
+\newcommand{\cdotfill}{%
+    \leavevmode
+%    \cleaders \hb@xt@0.425em{\hss$\cdot\m@th$\hss }\hfill \kern \z@
+    \cleaders \hb@xt@0.25em{\hss$\cdot\m@th$\hss }\hfill \kern \z@
+}
+	% leaders, xleaders ???
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%equarray 微修正（）
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\eqnarray{%%
+ \stepcounter{equation}%%
+ \let\@currentlabel=\theequation
+ \global\@eqnswtrue
+ \global\@eqcnt\z@
+ \tabskip\@centering
+ \let\\=\@eqncr
+ $$\halign to \displaywidth\bgroup\@eqnsel\hskip\@centering
+ $\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne 
+ %%\hskip 2\arraycolsep 
+ \hfil$\displaystyle{{}##{}}$\hfil
+ &\global\@eqcnt\tw@ $\displaystyle\tabskip\z@{##}$\hfil 
+ \tabskip\@centering&\llap{##}\tabskip\z@\cr}
+
+ %%%%$$
+ 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 図・表 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \def\fnum@figure{\normalsize{\bf 図\ \thefigure}\ \,}
+ \def\fnum@table{\normalsize{\bf 表\ \thetable}\ \,}
+
+ \long\def\@makecaption#1#2{
+   \vskip 0pt % abovecaptionskip
+   \setbox\@tempboxa\hbox{#1 #2}
+   \ifdim \wd\@tempboxa >\hsize 
+     \begin{list}{}{\labelwidth 0pt \leftmargin 1.75cm \itemindent -0.75cm
+               \rightmargin 0.25cm}
+       \item[\normalsize#1] \normalsize#2
+     \end{list}
+   \else \hbox
+     to\hsize{\hfil\box\@tempboxa\hfil} 
+     \vskip 4pt  % belowcaptionskip
+   \fi}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%list環境の微小修正
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\leftmargini   3zw%%   25pt
+\leftmarginii  2zw%%   22pt 
+\leftmarginiii 2zw%%   18.7pt 
+\leftmarginiv  2zw%%   17pt 
+\leftmarginv   1zw%%   10pt
+\leftmarginvi  1zw%    10pt
+\leftmargin=\leftmargini
+\labelwidth=\leftmargini\advance\labelwidth-\labelsep
+\labelsep      1zw%%    5pt
+
+\def\@listI{%%
+\leftmargin\leftmargini 
+\parsep \z@%%                      4pt plus 2pt minus 1pt
+\topsep 6pt plus 2pt minus 2pt%%   8pt plus 2pt minus 4pt
+\itemsep 0pt plus 2pt \relax}%%    4pt plus 2pt minus 1pt
+\let\@listi=\@listI
+\@listi 
+
+\def\@listii{%%
+\leftmargin\leftmarginii
+ \labelwidth\leftmarginii\advance\labelwidth-\labelsep
+ \topsep 2pt plus 1pt minus 1pt%%  4pt plus 2pt minus 1pt
+ \parsep \z@%%                     2pt plus 1pt minus 1pt
+ \itemsep =0pt plus 1pt\relax}
+
+%%display数式のペナルティ変更%%%%%%%%%%%
+\global\postdisplaypenalty 0%10000
+%%display数式がぺージトップへ来ることを認可。デフォルトでは厳禁（10000）
+\global\predisplaypenalty 0%10000
+%%display数式がページボトムへ来ることを認可（デフォルト）
+
+
+
+%%% 行間の調整（ここから）%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\baselinestretch{1.19}
+
+%%行数で指定する場合は、希望行数－１を係数とする。
+%%31行の場合は　30\baselineskip　とする
+%%この場合は当然、行送りによって天地寸法は変動。
+\baselineskip =\baselinestretch\baselineskip
+\textheight=36\baselineskip \advance \textheight by \topskip%%
+ \advance \textheight by 1pt%%1ptの余裕を持たせる
+%%% 行間の調整（ここまで）%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newtheorem{theorem}{定理}
+  \renewcommand{\endtheorem}{\hfill□\endtrivlist}
+
+\newtheorem{definition}{定義}
+  \renewcommand{\enddefinition}{\hfill■\endtrivlist}
+
+\newtheorem{lemma}{補題}
+  \renewcommand{\endlemma}{\hfill□\endtrivlist}
+
+
+
+\def\@begintheorem#1#2{\trivlist \item[%
+		\hskip \labelsep\hspace{0zw}{\raisebox{0zh}[0pt][0pt]{\colorbox{darkgray}{\textcolor{white}{\bf #1~#2}}}}%
+		]\leavevmode\par}
+\def\@opargbegintheorem#1#2#3{\trivlist \item[%
+		\hskip \labelsep\hspace{0zw}{\raisebox{0zh}[0pt][0pt]{\colorbox{darkgray}{\textcolor{white}{\bf #1~#2\ (#3)}}}}%
+		]\leavevmode\par}
+% \def\@begintheorem#1#2{\trivlist \item[%
+% 		\hskip \labelsep\hspace{0zw}{{\bf \fbox{#1~#2}}}%
+% 		]\leavevmode\par}
+% \def\@opargbegintheorem#1#2#3{\trivlist \item[%
+% 		\hskip \labelsep\hspace{0zw}{{\bf \fbox{#1~#2}\quad (#3)}}%
+% 		]\leavevmode\par}
+
+
+
+%--------------------------------------------------------------------
+%
+%	章建て
+%
+ \def\thesection {\@chapappl~\arabic{section}~\@chapappr}
+ \def\thepart {\arabic{section}}
+ \def\thesubsection {\thepart.\arabic{subsection}}
+ \def\thesubsubsection {\thesubsection .\arabic{subsubsection}}
+ \def\theparagraph {\thesubsubsection.\arabic{paragraph}}
+ \def\thesubparagraph {\theparagraph.\arabic{subparagraph}}
+ \def\@chapappl{第}
+ \def\@chapappr{章}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 章ごとに numbering
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     \renewcommand{\theequation}{%
+          \thepart.\arabic{equation}}
+     \@addtoreset{equation}{section}
+
+     \renewcommand{\thetable}{%
+          \thepart.\arabic{table}}
+     \@addtoreset{table}{section}
+
+     \renewcommand{\thefigure}{%
+          \thepart.\arabic{figure}}
+     \@addtoreset{figure}{section}
+
+     \renewcommand{\thetheorem}{%
+          \thepart.\arabic{theorem}}
+     \@addtoreset{theorem}{section}
+
+     \renewcommand{\thedefinition}{%
+          \thepart.\arabic{definition}}
+     \@addtoreset{definition}{section}
+
+     \renewcommand{\thelemma}{%
+          \thepart.\arabic{lemma}}
+     \@addtoreset{lemma}{section}
+     
+
+%---------------------------------------------------------------------
+%
+%	目次
+%
+ 
+\def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+ \fi\section*{\hfil \kintou{2.5zw}{目次}\@mkboth{目 次}{目 次}}
+ \@starttoc{toc}\if@restonecol\twocolumn\fi}
+\def\l@part#1#2{\addpenalty{-\@highpenalty}
+ \addvspace{2.25em plus 1pt} \begingroup
+ \@tempdima 3em \parindent \z@ \rightskip \@pnumwidth \parfillskip
+-\@pnumwidth 
+ {\large \bf \leavevmode #1\hfil \hbox to\@pnumwidth{\hss #2}}\par
+ \nobreak \endgroup}
+
+\def\l@section{\@dottedtocline{1}{0.em}{4.3em}}
+\def\l@subsection{\@dottedtocline{2}{2.8em}{2.3em}}
+\def\l@subsubsection{\@dottedtocline{3}{3.8em}{3.2em}}
+
+
+% 目次のスタイル変更
+%%% 目次の三点リーダー
+%%% 藤田眞作「LaTeXまくろの八衢」
+%%% アジソンウェスレイジャパン(1995)第19章参照
+%%%
+\makeatletter
+\def\@dottedtocline#1#2#3#4#5{%
+  \vskip\toclineskip \@plus.2\p@%
+  {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+    \parindent #2\relax\@afterindenttrue
+   \interlinepenalty\@M
+   \leavevmode
+   \@lnumwidth #3\relax
+   \advance\leftskip \@lnumwidth \hbox{}\hskip -\leftskip
+    {#4}\quad\nobreak
+ \leaders\hbox to 0.33333zw{\hfil\raise.26zw\hbox{.}\hfil}%
+     \hfill \nobreak\hbox to\@pnumwidth{%
+         \hss\reset@font\rmfamily\normalfont \normalcolor #5}\par}}
+\makeatother

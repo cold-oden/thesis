@@ -1,0 +1,36 @@
+\renewcommand{\lstlistingname}{{\bf ソースコード}}
+
+\makeatletter
+	\AtBeginDocument{% リスト番号の付け方
+	\renewcommand*{\thelstlisting}{\bf\thepart.\arabic{lstlisting}}%
+	\@addtoreset{lstlisting}{section}}
+\makeatother
+
+\lstset{
+ 	%背景色と透過度
+%% 	backgroundcolor={\color[rgb]{0.8706,0.9216,0.9686}},
+ 	backgroundcolor={\color{lightgray}},
+ 	%標準の書体
+% 	basicstyle = \ttfamily\scriptsize,
+ 	basicstyle = \ttfamily\footnotesize,
+ 	%枠 "t"は上に線を記載, "T"は上に二重線を記載
+	%他オプション：leftline，topline，bottomline，lines，single，shadowbox
+%% 	frame = tbrl,
+ 	frame = TBRL,
+ 	%frameまでの間隔(行番号とプログラムの間)
+ 	framesep = 5pt,
+ 	%行番号の位置
+ 	numbers = left,
+	%行番号の間隔
+ 	stepnumber = 1,
+	%行番号の書体
+ 	numberstyle = {\sffamily\scriptsize\color{darkgray}},
+	%タブの大きさ
+ 	tabsize = 4,
+ 	%左側マージン
+	xleftmargin=3zw,
+ 	%右側マージン
+	xrightmargin=1zw,
+ 	%キャプションの場所("tb"ならば上下両方に記載)
+ 	captionpos = t
+}
