@@ -7,9 +7,13 @@
 \contentsline {subsection}{\numberline {2.3}P-D制御}{2}{}%
 \contentsline {subsection}{\numberline {2.4}B-dot制御則}{3}{}%
 \contentsline {subsection}{\numberline {2.5}クロスプロダクト則}{5}{}%
-\contentsline {section}{\numberline {第~3~章}実験システム}{6}{}%
+\contentsline {section}{\numberline {第~3~章}実験システムの構築}{6}{}%
 \contentsline {subsection}{\numberline {3.1}構造}{6}{}%
-\contentsline {subsection}{\numberline {3.2}回路構成}{7}{}%
+\contentsline {subsection}{\numberline {3.2}制御システムの設計}{6}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}磁気トルカの制作}{7}{}%
+\contentsline {subsection}{\numberline {3.3}磁気トルカの駆動回路}{8}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}駆動回路の設計}{8}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}磁気トルカの電流計算など}{9}{}%
 \contentsline {section}{\numberline {第~4~章}実験方法および結果}{11}{}%
 \contentsline {subsection}{\numberline {4.1}Duty比100\%・Duty比50\%による制御}{11}{}%
 \contentsline {subsubsection}{\numberline {4.1.1}実験方法}{11}{}%

@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.10.3)  1 JAN 2025 22:47
+This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.10.3)  2 JAN 2025 22:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -506,60 +506,63 @@ LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <14.4> not available
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 13.85594pt on input line 5.
 ) [1] (./制御理論.tex [2] [3] [4] [5]) (./実験システム.tex
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 10.53629pt on input line 12.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 5.77332pt on input line 12.
-LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 24.
-LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 10.53629pt on input line 24.
-LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 24.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 10.53629pt on input line 24.
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 5.77332pt on input line 40.
 File: ./figure/実験システム.jpg Graphic file (type bmp)
 <./figure/実験システム.jpg>
- [6]
+LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 14.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 10.53629pt on input line 14.
+LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 14.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 10.53629pt on input line 14.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 5.77332pt on input line 22.
 File: ./figure/system-crop.pdf Graphic file (type pdf)
 <./figure/system-crop.pdf>
-File: ./figure/回路図1.png Graphic file (type bmp)
-<./figure/回路図1.png>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 8056) has occurred while \output is active []
+
+ [6]
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 35.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 35.
+LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 35.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 35.
+LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 35.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 35.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 5.77332pt on input line 38.
+
+Underfull \vbox (badness 5105) has occurred while \output is active []
 
  [7]
+File: ./figure/回路図1.png Graphic file (type bmp)
+<./figure/回路図1.png>
 File: ./figure/scope_5.png Graphic file (type bmp)
 <./figure/scope_5.png>
+
+Underfull \vbox (badness 4303) has occurred while \output is active []
+
  [8]
 File: ./figure/回路図.png Graphic file (type bmp)
 <./figure/回路図.png>
 File: ./figure/scope_11.png Graphic file (type bmp)
 <./figure/scope_11.png>
-File: ./figure/50current.png Graphic file (type bmp)
-<./figure/50current.png>
 
-Underfull \vbox (badness 3557) has occurred while \output is active []
+Underfull \vbox (badness 2790) has occurred while \output is active []
 
  [9]
+File: ./figure/50current.png Graphic file (type bmp)
+<./figure/50current.png>
 File: ./figure/touka.png Graphic file (type bmp)
 <./figure/touka.png>
-) [10] (./実験および結果.tex
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 6.
-LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 6.
-LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 6.
-LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 6.
-LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 6.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 6.
- [11] [12] [13] [14] [15]) [16] (./bibliography.tex) [17] (./acknowledgment.tex) [18] (./appendix.tex (./appendix.sty) [19]
+) [10] (./実験および結果.tex [11] [12] [13] [14] [15]) [16] (./bibliography.tex) [17] (./acknowledgment.tex) [18] (./appendix.tex (./appendix.sty) [19]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [20]
@@ -584,6 +587,6 @@ Here is how much of TeX's memory you used:
  27186 multiletter control sequences out of 15000+600000
  582090 words of font info for 152 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 57i,9n,65p,314b,1723s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,9n,65p,315b,1723s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (27 pages, 118700 bytes).
+Output written on main.dvi (27 pages, 123176 bytes).
