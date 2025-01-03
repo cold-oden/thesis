@@ -118,17 +118,37 @@ PCパーマロイを用いて磁気トルカの制作を行った．
 となる．さらに$t_2$ [s] 経過し，
 
 \begin{equation}
-	i(t) = \frac{E\left(1-e^{-\frac{R_L}{L}t_1}\right)e^{-\frac{R_L}{L}(t-t_1)}}{R_L}\left(1-e^{-\frac{R_L}{L}(t-t_1-t_2)}\right)
+	i(t) = \frac{E\left(1-e^{-\frac{R_L}{L}t_1}\right)e^{-\frac{R_L}{L}(t_2-t_1)}}{R_L}\left(1-e^{-\frac{R_L}{L}(t-t_1-t_2)}\right)
 \end{equation}
 
-というような電流の推移をする．この電流の推移を，図\ref{fig:cirkit}の回路を用いてduty比50\%でシミュレーションしたグラフを図\ref{fig:current50}に示す．
+というような電流の推移をする．
+
+\begin{table}[H]
+	\centering
+	\caption{磁気トルカの等価回路}
+	\label{table:torquer2}
+	\begin{tabular}{|c||c|}
+		\hline
+		インダクタンス$L$ [mH] & 	82.0 \\ \hline %有効数字2,3桁で十分では
+		抵抗 $R_L$ [$\Omega $] & 18.3 \\ \hline %R_L追加
+	\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{./figure/touka.png}
+		\caption{磁気トルカの等価回路}
+		\label{fig:touka}
+\end{figure}
+
+この電流の推移を，図\ref{fig:cirkit}の回路を用いてduty比50\%でシミュレーションしたグラフを図\ref{fig:current50}に示す．
 このように，磁気トルカに電圧E [V] を印加したときの電流を$I_\mathrm{max} [A]$とすると，duty比DのPWM信号で磁気トルカを駆動させたとき，
-およその電流を$I(\mathrm{D})=I_\mathrm{max}D [A]$で近似できる                   ． 
+およその電流を$I(\mathrm{D})=I_\mathrm{max}D [A]$で近似できる． 
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[scale=0.3]{./figure/回路図.png}
-		\caption{実験システムの回路図}
+		\caption{磁気トルカの駆動回路}
 		\label{fig:cirkit}
 \end{figure}
 
@@ -142,13 +162,7 @@ PCパーマロイを用いて磁気トルカの制作を行った．
 \begin{figure}[H]
 	\centering
 		\includegraphics[scale=0.3]{./figure/50current.png}
-		\caption{磁気トルカに加わる電圧}
+		\caption{磁気トルカに流れる電流}
 		\label{fig:current50}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-		\includegraphics[scale=0.3]{./figure/touka.png}
-		\caption{磁気トルカの等価回路}
-		\label{fig:touka}
-\end{figure}
