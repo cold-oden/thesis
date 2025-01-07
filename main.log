@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.10.3)  3 JAN 2025 22:37
+This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.10.3)  7 JAN 2025 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -314,7 +314,7 @@ LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 \c@lstlisting=\count303
- (./緒言.tex
+ (./制御理論.tex
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 19.95642pt on input line 3.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
@@ -339,91 +339,31 @@ LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JY2/gt/m/n' tried instead on input line 5.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 13.85594pt on input line 5.
- [1
-
-
-]) [2] (./実験システム.tex
-File: ./figure/実験システム.jpg Graphic file (type bmp)
-<./figure/実験システム.jpg>
-LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 14.
-LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 10.53629pt on input line 14.
-LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 14.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 10.53629pt on input line 14.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 22.
+(Font)              scaled to size 7.69775pt on input line 8.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 5.77332pt on input line 22.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+(Font)              scaled to size 5.77332pt on input line 8.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 8.
  (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 8.
  (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 22.
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 5.77332pt on input line 22.
-File: ./figure/system-crop.pdf Graphic file (type pdf)
-<./figure/system-crop.pdf>
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 10.53629pt on input line 13.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 7.69775pt on input line 13.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 5.77332pt on input line 13.
+ [1
 
-Underfull \vbox (badness 8056) has occurred while \output is active []
 
- [3]
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 35.
-LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 35.
-LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 35.
+] [2] [3]) [4] (./bibliography.tex
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 35.
-LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 35.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 35.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 38.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 5.77332pt on input line 38.
-
-Underfull \vbox (badness 5105) has occurred while \output is active []
-
- [4]
-File: ./figure/回路図1.png Graphic file (type bmp)
-<./figure/回路図1.png>
-File: ./figure/scope_5.png Graphic file (type bmp)
-<./figure/scope_5.png>
-
-Underfull \vbox (badness 4303) has occurred while \output is active []
-
- [5]
-File: ./figure/touka.png Graphic file (type bmp)
-<./figure/touka.png>
-File: ./figure/回路図.png Graphic file (type bmp)
-<./figure/回路図.png>
- [6]
-File: ./figure/scope_11.png Graphic file (type bmp)
-<./figure/scope_11.png>
-File: ./figure/50current.png Graphic file (type bmp)
-<./figure/50current.png>
-) [7] (./bibliography.tex) [8] (./acknowledgment.tex) [9] (./appendix.tex (./appendix.sty)
-LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 16.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 16.
- [10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12]) [13] (./main.aux)
+(Font)              scaled to size 10.53629pt on input line 75.
+) [5] (./main.aux)
  ***********
 pLaTeX2e <2023-02-14u04>+1, based on
 LaTeX2e <2023-11-01> patch level 1
@@ -431,12 +371,12 @@ L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4813 strings out of 474774
- 68981 string characters out of 5762047
- 2144035 words of memory out of 5000000
- 27094 multiletter control sequences out of 15000+600000
- 573369 words of font info for 109 fonts, out of 8000000 for 9000
+ 4449 strings out of 474774
+ 64769 string characters out of 5762047
+ 1936035 words of memory out of 5000000
+ 26755 multiletter control sequences out of 15000+600000
+ 572037 words of font info for 103 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 57i,9n,65p,315b,1723s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,16n,65p,301b,267s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (13 pages, 69604 bytes).
+Output written on main.dvi (5 pages, 18408 bytes).

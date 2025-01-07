@@ -17,7 +17,7 @@ Arduinoへの電力供給は角型乾電池を用い，磁気トルカへの電�
 
 \subsection{制御システムの設計}
 
-　搭載するArduinoは，ELEGOO社製のArduino Uno R3を，開発環境にはArduino IDEを用いた．
+　搭載するArduinoは，ELEGOO社製のArduino Uno R3を，開発環境にはArduino IDEを用いる．
 姿勢角度，角速度および磁力の検出には，Bosch Sensortec社のBNO055と，
 Arduino IDEのライブラリ$"\mathrm{Adafruit\_Sensor.h}"$，$"\mathrm{Adafruit\_BNO055.h}"$
 を用いる．また，姿勢角度，角速度および磁力の記録にはSDカードを用いており，
@@ -35,17 +35,25 @@ seeed studio社製のSD Card shield V4.0をArduinoに装着している．
 \subsubsection{磁気トルカの制作}
 
 　搭載した磁気トルカのパラメータを表\ref{table:torquer}に示す．
-磁気トルカが発生させられるトルクは，磁気トルカの磁気モーメントを$\boldsymbol{M}$，磁気トルカがとらえる磁束密度を$\boldsymbol{B}$とすると，
+$\boldsymbol{E-B}$対応において，磁気トルカが発生させる磁気モーメントは，電流$I$，磁心の断面積$S$，法線ベクトル$\boldsymbol{n}$を用いて，
 \begin{equation}
-	\boldsymbol{T = M \times B}
+	\boldsymbol{m}=IS\boldsymbol{n}
 \end{equation}
-とあらわされる．
+と表される．また，地磁気を$\boldsymbol{B}_\mathrm{geo}$ [T] とすると，磁気トルカがとらえる磁束密度は，
+\begin{equation}
+	\boldsymbol{B} = \mu_r\boldsymbol{B}_\mathrm{geo}
+\end{equation}
+となる．
+そして，磁気トルカが発生させられるトルクは，磁気トルカの磁気モーメントと，磁気トルカがとらえる磁束密度を用いて，
+\begin{equation}
+	\boldsymbol{T = m \times B}
+\end{equation}
+と表される．
 
 　まず，芯材にステンレス鋼を用いて磁気トルカを作り，磁石を用いて反応性を確かめた．
 しかし，ステンレス鋼の保磁力の高さのため，磁気トルカに電流を流していないときも磁力を持っており，
 また比透磁率も低く，電流を流しているとき，いないときの差がなく磁力も低かったため，これを用いず
 PCパーマロイを用いて磁気トルカの制作を行った．
-
 　芯材であるPCパーマロイの選定理由は，その透磁率の高さである．PCパーマロイは比透磁率が約200,000で，磁気トルカがとらえられる磁力が高くなる．
 また，保磁力が低く，消磁しやすいため，必要な時だけトルクを発生させられる．
 
@@ -59,8 +67,6 @@ PCパーマロイを用いて磁気トルカの制作を行った．
 		コイル長さL [mm] & 100\\ \hline
 		コイル直径D [mm] & 5\\ \hline
 		巻き数n [-] & 983 \\ \hline
-		インダクタンスL [mH] & 	82.017 \\ \hline
-		抵抗 [$\Omega $] & 18.3 \\ \hline
 		芯材 & PCパーマロイ \\ \hline
 		線材 & ポリエステル被覆銅線 \\ \hline    
 	\end{tabular}

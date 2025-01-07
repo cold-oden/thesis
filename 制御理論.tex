@@ -2,10 +2,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{制御理論}
 
-\subsection{本研究で用いる}
+\subsection{本研究で用いる理論}
+本研究では，P制御，P-D制御，B-dot制御則，クロスプロダクト則を検証する．
+
+本研究で用いる制御モデルは，電流Iを入力とし，出力は角度$\theta$である．
+この二つの関係を運動方程式で表すと，
+
+\begin{equation}
+    \begin{aligned}
+        J\ddot{\theta} &= \boldsymbol{M \times B}\\
+                       &= MB\sin\theta\\
+                       &= \mu nISB\sin\theta
+    \end{aligned}
+\end{equation}
+
+となり，線形事変システムであるため，モデル化が難しい．
+そのためP制御，PD制御では，
+制御対象のモデリングを必要としない，
+限界感度法を用いてゲインの調整を行った．
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{P制御}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{P-D制御}
@@ -14,9 +37,219 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{B-dot制御則}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-a
-\newpage
+　B-dot制御則とは，人工衛星のある1軸を規定し，その軸に沿った磁場の変化率の符号と反対の磁気モーメントを発生させる制御である．
+
+　静止状態において，地磁気ベクトル$\boldsymbol{B}_\mathrm{geo}$が，衛星を基準とするx-y平面上のx軸に沿っていると考えると，
+t秒後の地磁気のx成分$B_x$，y成分$B_y$は，地磁気ベクトルの大きさ$B_o=|\boldsymbol{B}_\mathrm{geo}|$，角速度$\omega_z$を用いて，
+\begin{align}
+    \left\{
+        \begin{aligned}
+            B_x &= B_o\cos\omega_zt\\
+            B_y &= -B_o\sin\omega_zt\\
+        \end{aligned}                    
+    \right.
+\end{align}
+
+で表される．
+そして，それぞれの時間変化は，
+
+\begin{align}
+    \left\{
+        \begin{aligned}
+            \dot{B_x} &= -B_o\omega_z\sin\omega_zt = B_y\omega_z\\
+            \dot{B_y} &= -B_o\omega_z\cos\omega_zt = -B_x\omega_z
+        \end{aligned}                    
+    \right.
+\end{align}
+
+である．
+初期位相および目標角を0 [deg] とすると，目標磁気モーメントは
+
+\begin{equation}
+    M_x = -k\dot{B_x} = -B_o\omega_z\sin\omega_zt
+\end{equation}
+
+で決定される．
+このとき，生じるトルクは，
+\begin{equation}
+    \begin{aligned}
+        \mathrm{T_z} &= M_x \times B_y\\
+                     &= (kB_o\omega_z\sin\omega_zt)(-B_o\sin\omega_zt)\\
+                     &= -kB_o^2\omega_z\sin^2\omega_zt
+    \end{aligned}
+\end{equation}
+
+である．
+衛星の1回転にわたり，$\sin\omega_zt$の平均値は0.5となるため，その平均値は
+
+\begin{equation}
+    \mathrm{T_\mathrm{z,ave}} = \frac{-kB_o^2\omega_z}{2}
+\end{equation}
+
+で表される．このトルクから，衛星の回転運動についての運動方程式は，
+
+\begin{equation}
+    I_z\dot{\omega_z} = \dot{L} = \mathrm{T_\mathrm{z,ave}} = \frac{-kB_o^2\omega_z}{2}
+\end{equation}
+
+となる．これを変形して，
+
+\begin{equation}
+    \dot{\omega_z}+\frac{kB_o^2}{2I_z}\omega_z = 0
+\end{equation}
+
+が得られる．この微分方程式は，$\tau=\frac{I_z}{kB_o^2}$とすると，
+
+\begin{equation}
+    \omega_z = \omega_{z_o}e^{-\frac{t}{2\tau}} 
+\end{equation}
+
+となり，指数関数的に角速度が減少することがわかる．\\
+　次に，磁気トルカを1つ増やし，それをy軸に添わせることを考える．
+目標磁気モーメントは
+
+\begin{equation}
+    M_x = -k\dot{B_y} = kB_o\omega_z\cos\omega_zt
+\end{equation}
+
+となる．
+二つの磁気トルカにより生じるトルクを合成すると，
+
+\begin{equation}
+    \begin{aligned}
+        T_z &= M_xB_y - M_yB_x\\
+            &= (kB_o\omega_z\sin\omega_zt)(-B_o\sin\omega_zt)-(kB_o\omega_z\cos\omega_zt)(B_o\cos\omega_zt)\\
+            &= -kB_o^2\omega_z\sin^2\omega_zt - kB_o^2\omega_z\cos^2\omega_zt\\
+            &= -kB_o^2\omega_zt\\
+            &= \dot{L} = I_Z\dot{\omega_z}
+    \end{aligned}
+\end{equation}
+
+この微分方程式の$\omega_z$の解は，
+
+\begin{equation}
+    \omega_z = \omega_{z_o}e^{-\frac{t}{\tau}} 
+\end{equation}
+
+となるので，減衰の時定数が半分となることがわかる．
+　次に，磁気トルカをもう1つ追加したときを考える．3つの磁気トルカがそれぞれ直交するように衛星に配置されているとき，
+x-y平面，z-x平面，y-z平面について，B-dot制御を考える．
+x軸回り，y軸回りの角速度を$\omega_x$，$\omega_y$とすると，
+
+\begin{align}
+    \left\{
+        \begin{aligned}
+            B_z &= B_o\cos\omega_yt\\
+            B_x &= -B_o\sin\omega_yt\\
+        \end{aligned}                    
+    \right.
+    ，
+    \left\{
+        \begin{aligned}
+            B_y &= B_o\cos\omega_xt\\
+            B_z &= -B_o\sin\omega_xt\\
+        \end{aligned}                    
+    \right.
+\end{align}
+
+で表される．
+そして，それぞれの時間変化は，
+
+\begin{align}
+    \left\{
+        \begin{aligned}
+            \dot{B_z} &= -B_o\omega_y\sin\omega_yt = B_x\omega_y\\
+            \dot{B_x} &= -B_o\omega_y\cos\omega_yt = -B_z\omega_y
+        \end{aligned}                    
+    \right.
+    ，
+    \left\{
+        \begin{aligned}
+            \dot{B_y} &= -B_o\omega_x\sin\omega_xt = B_z\omega_x\\
+            \dot{B_z} &= -B_o\omega_x\cos\omega_xt = -B_y\omega_x
+        \end{aligned}                    
+    \right.
+\end{align}
+
+となる．（1.2）式と（1.13）式を重ね合わせると，
+
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            \dot{B_x} = B_y\omega_z - B_z\omega_y\\
+            \dot{B_y} = B_z\omega_x - B_x\omega_z\\
+            \dot{B_z} = B_x\omega_y - B_y\omega_x
+        \end{aligned}
+    \right.
+\end{equation}
+
+となることから，xyz空間において，地磁気の時間変化は
+
+\begin{equation}
+    \boldsymbol{\dot{B} = B \times \omega}
+\end{equation}
+
+で表され，
+目標磁気モーメントは，
+
+\begin{equation}
+    \begin{aligned}
+        \boldsymbol{M} &= -k \boldsymbol{\dot{B}}\\
+                       &= -k(\boldsymbol{B \times \omega})
+    \end{aligned}
+\end{equation}
+
+で求められる．
 
 \subsection{クロスプロダクト則}
-\newpage
+　衛星座標系で測定された地磁気ベクトル$\boldsymbol{b_m}$，その衛星の位置が目標姿勢を保っていた場合の地磁気ベクトル$\boldsymbol{b_r}$を用いて，
+外積ベクトル$\boldsymbol{c}$を
+
+\begin{equation}
+    \boldsymbol{c} = \boldsymbol{\frac{b_m}{|b_m|}\times\frac{b_r}{|b_r|}}
+\end{equation}
+
+で定める．
+これと，角速度の誤差$\Delta\omega = [\omega_x\space\omega_y\space\omega_z]$を用いて，
+目標トルクが
+
+\begin{equation}
+    \boldsymbol{T}_R = K\boldsymbol{c}+k\Delta\boldsymbol{\omega}\\
+\end{equation}
+
+で定められる．なお，$K，k$は，
+
+\begin{equation}
+    K = 
+    \begin{bmatrix}
+        K_x & 0 & 0 \\
+        0 & K_y & 0 \\
+        0 & 0 & K_z \\
+    \end{bmatrix}
+    ，k =
+    \begin{bmatrix}
+        k_x & 0 & 0 \\
+        0 & k_y & 0 \\
+        0 & 0 & k_z \\
+    \end{bmatrix}
+\end{equation}
+
+で定められる係数行列である．
+本研究はz軸方向の一軸のみ制御するため，$c_z = b_{m_x}b_{r_y} - b_{m_y}b_{r_x}$なので，
+
+\begin{equation}
+    T_{R_z} = K_x c_z + k_x \omega_z 
+\end{equation}
+
+で，
+磁気トルカにより発生するトルクの式より，磁気トルカの目標磁気モーメントは，
+
+\begin{equation}
+    \begin{aligned}
+        T_z = M_x B_y - M_y B_x &= M_x B_y (なお，M_y = 0)\\
+         K_x c_z + k_x \omega_z &= M_x B_y\\
+                            M_x &= \frac{K_x c_z + k_x \omega_z}{B_y}
+    \end{aligned}
+\end{equation}
+
+で求められる．
