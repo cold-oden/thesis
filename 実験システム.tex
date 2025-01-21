@@ -150,6 +150,7 @@ PCパーマロイを用いて磁気トルカの制作を行った．
 この電流の推移を，図\ref{fig:cirkit}の回路を用いてduty比50\%でシミュレーションしたグラフを図\ref{fig:current50}に示す．
 このように，磁気トルカに電圧E [V] を印加したときの電流を$I_\mathrm{max} [A]$とすると，duty比DのPWM信号で磁気トルカを駆動させたとき，
 およその電流を$I(\mathrm{D})=I_\mathrm{max}D [A]$で近似できる． 
+そのため電流$I$を流したいときは，$D=\frac{I}{I_\mathrm{max}}$でDuty比を決定する．
 
 \begin{figure}[H]
 	\centering

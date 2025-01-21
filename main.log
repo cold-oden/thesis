@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.10.3)  10 JAN 2025 17:44
+This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.10.3)  21 JAN 2025 23:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -318,23 +318,29 @@ LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 \c@lstlisting=\count303
- (./序論.tex
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 3.
+(Font)              scaled to size 19.95642pt on input line 100.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 3.
+(Font)              scaled to size 19.95642pt on input line 100.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 3.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 100.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 3.
+(Font)              scaled to size 19.95642pt on input line 100.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 3.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 100.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 3.
+(Font)              scaled to size 19.95642pt on input line 100.
+ (./main.toc [1
+
+
+])
+\tf@toc=\write3
+\openout3 = `main.toc'.
+
+ [2] (./序論.tex
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 13.85594pt on input line 5.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 (Font)              scaled to size 13.85594pt on input line 5.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 5.
-LaTeX Fo
+(Font

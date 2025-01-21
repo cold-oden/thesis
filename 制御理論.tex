@@ -3,7 +3,7 @@
 \section{制御理論}
 
 \subsection{本研究で用いる理論}
-　本研究では，P制御，P-D制御，B-dot制御則，クロスプロダクト則を検証する．
+　本研究では，P制御，PD制御，B-dot制御則，クロスプロダクト則を検証する．
 
 　本研究で用いる制御モデルは，電流Iを入力とし，出力は角速度$\omega$である．
 この二つの関係を運動方程式で表すと，
@@ -17,7 +17,7 @@
 \end{equation}
 
 となり，非線形システムであるため，モデル化が難しい．
-そのためP，PD，PID制御では，
+そのためP，PD制御では，
 制御対象のモデリングを必要としない，
 限界感度法を用いてゲインの調整を行った．
 
@@ -47,9 +47,20 @@
     u(s) = (k_P+k_Ds)e(s)
 \end{equation}
 で定める．
+PD制御は，粘性を高めることに相当する効果があり，P制御で問題となった振動を改善できる．
+パラメータが比例ゲイン$k_P$と微分ゲイン$k_D$の二つを持つため，速応性，安定度の両方を調整できる． 
+
+% \subsection{PID制御}
+% 　PID制御では，制御量$\omega(t)$と目標値$\omega^{ref}(t)$の差を偏差$e(t)$として，コントローラを
+% \begin{equation}
+%     u(s) = \frac{k_Ds^2+k_Ps+k_I}{s}e(s)
+% \end{equation}
+% で定める．
+% P制御，PD制御の問題である定常偏差は，目標値が定常値であることから，
+% 内部モデル原理より，定常偏差が0となる．
 
 
-\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{B-dot制御則}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -106,13 +117,13 @@ t秒後の地磁気のx成分$B_x$，y成分$B_y$は，地磁気ベクトルの�
 で表される．このトルクから，衛星の回転運動についての運動方程式は，
 
 \begin{equation}
-    I_z\dot{\omega_z} = \dot{L} = \mathrm{T_\mathrm{z,ave}} = \frac{-kB_o^2\omega_z}{2}
+    J_z\dot{\omega_z} = \dot{L} = \mathrm{T_\mathrm{z,ave}} = \frac{-kB_o^2\omega_z}{2}
 \end{equation}
 
 となる．これを変形して，
 
 \begin{equation}
-    \dot{\omega_z}+\frac{kB_o^2}{2I_z}\omega_z = 0
+    \dot{\omega_z}+\frac{kB_o^2}{2J_z}\omega_z = 0
 \end{equation}
 
 が得られる．この微分方程式は，$\tau=\frac{I_z}{kB_o^2}$とすると，
@@ -138,7 +149,7 @@ t秒後の地磁気のx成分$B_x$，y成分$B_y$は，地磁気ベクトルの�
             &= (kB_o\omega_z\sin\omega_zt)(-B_o\sin\omega_zt)-(kB_o\omega_z\cos\omega_zt)(B_o\cos\omega_zt)\\
             &= -kB_o^2\omega_z\sin^2\omega_zt - kB_o^2\omega_z\cos^2\omega_zt\\
             &= -kB_o^2\omega_zt\\
-            &= \dot{L} = I_Z\dot{\omega_z}
+            &= \dot{L} = J_Z\dot{\omega_z}
     \end{aligned}
 \end{equation}
 
@@ -149,6 +160,8 @@ t秒後の地磁気のx成分$B_x$，y成分$B_y$は，地磁気ベクトルの�
 \end{equation}
 
 となるので，減衰の時定数が半分となることがわかる．
+
+
 　次に，磁気トルカをもう1つ追加したときを考える．3つの磁気トルカがそれぞれ直交するように衛星に配置されているとき，
 x-y平面，z-x平面，y-z平面について，B-dot制御を考える．
 x軸回り，y軸回りの角速度を$\omega_x$，$\omega_y$とすると，
@@ -263,7 +276,7 @@ x軸回り，y軸回りの角速度を$\omega_x$，$\omega_y$とすると，
 
 \begin{equation}
     \begin{aligned}
-        T_z = M_x B_y - M_y B_x &= M_x B_y (なお，M_y = 0)\\
+        T_z = M_x B_y - M_y B_x &= M_x B_y \space (M_y = 0)\\
          K_x c_z + k_x \omega_z &= M_x B_y\\
                             M_x &= \frac{K_x c_z + k_x \omega_z}{B_y}
     \end{aligned}
