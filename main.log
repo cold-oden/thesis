@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.10.3)  21 JAN 2025 23:03
+This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.uptex) (TeX Live 2024) (preloaded format=uplatex 2024.10.3)  25 JAN 2025 22:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -238,9 +238,39 @@ Package: multicol 2023/03/30 v1.9f multicolumn formatting (FMi)
 \mult@nat@firstbox=\box123
 \colbreak@box=\box124
 \mc@col@check@num=\count288
+) (c:/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+ (c:/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (c:/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen185
+\captionmargin=\dimen186
+\caption@leftmargin=\dimen187
+\caption@rightmargin=\dimen188
+\caption@width=\dimen189
+\caption@indent=\dimen190
+\caption@parindent=\dimen191
+\caption@hangindent=\dimen192
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 0pt \setbox \@tempboxa \hbox {#1 #2} \ifdim \wd \@tempboxa >\hsize \begin {list}{}{\labelwidth 0pt \leftmargin 1.75cm \itemindent -0.75cm \rightmargin 0.25cm} \item [\normalsize #1] \normalsize #2 \end {list} \else \hbox to\hsize {\hfil \box \@tempboxa \hfil } \vskip 4pt \fi  on input line 1175.
+)
+
+Package caption Warning: Unknown document class (or package),
+(caption)                standard defaults will be used.
+See the caption package documentation for explanation.
+
+\c@caption@flags=\count289
+\c@continuedfloat=\count290
+)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count291
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count292
 ) (c:/texlive/2024/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count289
+\c@float@type=\count293
 \float@exts=\toks25
 \float@box=\box125
 \@float@everytoks=\toks26
@@ -251,29 +281,29 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (c:/texlive/2024/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip55
-\fb@frw=\dimen185
-\fb@frh=\dimen186
-\FrameRule=\dimen187
-\FrameSep=\dimen188
+\fb@frw=\dimen193
+\fb@frh=\dimen194
+\FrameRule=\dimen195
+\FrameSep=\dimen196
 ) (c:/texlive/2024/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count290
+\lst@mode=\count294
 \lst@gtempboxa=\box127
 \lst@token=\toks27
-\lst@length=\count291
-\lst@currlwidth=\dimen189
-\lst@column=\count292
-\lst@pos=\count293
-\lst@lostspace=\dimen190
-\lst@width=\dimen191
-\lst@newlines=\count294
-\lst@lineno=\count295
-\lst@maxwidth=\dimen192
+\lst@length=\count295
+\lst@currlwidth=\dimen197
+\lst@column=\count296
+\lst@pos=\count297
+\lst@lostspace=\dimen198
+\lst@width=\dimen199
+\lst@newlines=\count298
+\lst@lineno=\count299
+\lst@maxwidth=\dimen256
  (c:/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/02/21 1.10 (Carsten Heinz)
 ) (c:/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/02/21 1.10 (Carsten Heinz)
-\c@lstnumber=\count296
-\lst@skipnumbers=\count297
+\c@lstnumber=\count300
+\lst@skipnumbers=\count301
 \lst@framebox=\box128
 ) (c:/texlive/2024/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/02/21 1.10 listings configuration
@@ -281,22 +311,18 @@ File: listings.cfg 2024/02/21 1.10 listings configuration
 Package: listings 2024/02/21 1.10 (Carsten Heinz)
  (./jlisting.sty
 Package: jlisting 2006/02/20 0.2 (Thor)
-\lst@nextchar=\count298
+\lst@nextchar=\count302
 \lst@inputfile=\read2
 ) (./mylistings.sty) (c:/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2024-02-20 L3 backend support: dvips
 \l__pdf_internal_box=\box129
-\g__pdf_backend_object_int=\count299
+\g__pdf_backend_object_int=\count303
 \l__pdf_backend_content_box=\box130
 \l__pdf_backend_model_box=\box131
-\g__pdf_backend_annotation_int=\count300
-\g__pdf_backend_link_int=\count301
-\g__pdf_backend_link_sf_int=\count302
-) (./main.aux
-
-LaTeX Warning: Label `bdot' multiply defined.
-
-)
+\g__pdf_backend_annotation_int=\count304
+\g__pdf_backend_link_int=\count305
+\g__pdf_backend_link_sf_int=\count306
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
@@ -317,30 +343,122 @@ LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
-\c@lstlisting=\count303
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count307
+ (./実験システム.tex
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 100.
+(Font)              scaled to size 19.95642pt on input line 3.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 100.
+(Font)              scaled to size 19.95642pt on input line 3.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 100.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 100.
+(Font)              scaled to size 19.95642pt on input line 3.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 100.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 19.95642pt on input line 100.
- (./main.toc [1
-
-
-])
-\tf@toc=\write3
-\openout3 = `main.toc'.
-
- [2] (./序論.tex
+(Font)              scaled to size 19.95642pt on input line 3.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 13.85594pt on input line 5.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 (Font)              scaled to size 13.85594pt on input line 5.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <14.4> not available
-(Font
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 5.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 13.85594pt on input line 5.
+LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 5.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 13.85594pt on input line 5.
+File: ./figure/実験システム.pdf Graphic file (type pdf)
+<./figure/実験システム.pdf>
+LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 15.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 10.53629pt on input line 15.
+LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 15.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 10.53629pt on input line 15.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 7.69775pt on input line 25.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 5.77332pt on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+ (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+ (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 7.69775pt on input line 25.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 5.77332pt on input line 25.
+File: ./figure/block-crop.pdf Graphic file (type pdf)
+<./figure/block-crop.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1
+
+
+]
+File: ./figure/system-crop.pdf Graphic file (type pdf)
+<./figure/system-crop.pdf>
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 48.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 48.
+LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 48.
+LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 11.54663pt on input line 48.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 7.69775pt on input line 51.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 5.77332pt on input line 51.
+ [2]
+File: ./figure/回路図1.png Graphic file (type bmp)
+<./figure/回路図1.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3]
+File: ./figure/scope_5.png Graphic file (type bmp)
+<./figure/scope_5.png>
+ [4]
+File: ./figure/touka.png Graphic file (type bmp)
+<./figure/touka.png>
+File: ./figure/駆動回路.png Graphic file (type bmp)
+<./figure/駆動回路.png>
+ [5]
+File: ./figure/scope_11.png Graphic file (type bmp)
+<./figure/scope_11.png>
+File: ./figure/50current.png Graphic file (type bmp)
+<./figure/50current.png>
+) [6] (./main.aux)
+ ***********
+pLaTeX2e <2023-02-14u04>+1, based on
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 5945 strings out of 474774
+ 93998 string characters out of 5762047
+ 1928035 words of memory out of 5000000
+ 28232 multiletter control sequences out of 15000+600000
+ 572692 words of font info for 106 fonts, out of 8000000 for 9000
+ 929 hyphenation exceptions out of 8191
+ 67i,9n,77p,340b,522s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on main.dvi (6 pages, 16176 bytes).
