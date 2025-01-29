@@ -3,19 +3,28 @@
 \section{実験システムの構築}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{実験装置の構造}
-　本研究では，図\ref{fig:system}に示すような超小型人工衛星の模型を用いて実験を行う．
+　本研究では，図\ref{fig:souti}に示すような超小型人工衛星の模型を用いて実験を行う．
 模型は，転がり軸受を利用してできるだけ滑らかに回転し，なるべく摩擦の影響を受けることなく各制御理論の特性が反映されるようになっている．
+着脱可能な中心部のテーブルを固定し1軸の回転を実現している
 人工衛星に搭載している物は，Arduino Uno，SD Cardシールド，磁気・角度・角速度センサ，磁気トルカ駆動用の回路，磁気トルカ，9~V 角型乾電池である．
 Arduinoへの電力供給は角型乾電池を用い，磁気トルカへの電力供給は菊水電子工業株式会社製のPMC18-5Aを用いる．
+搭載物の写真を図\ref{fig:system}に示す．
+模型の土台はSolidedgeと3Dプリンターを用いて作製した．3Dプリンターの使い方は，付録A.1に記す．
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.07]{./figure/実験装置.jpg}
+		\caption{実験システムの外観}
+		\label{fig:souti}
+\end{figure}
 
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[scale=0.4]{./figure/実験システム.pdf}
-		\caption{実験システムの外観}
+		\caption{実験システムに搭載されている物品}
 		\label{fig:system}
 \end{figure}
-
 
 
 \subsection{制御システムの設計}
@@ -25,6 +34,7 @@ Arduinoへの電力供給は角型乾電池を用い，磁気トルカへの電�
 Arduino IDEのライブラリ$"\mathrm{Adafruit\_Sensor.h}"$，$"\mathrm{Adafruit\_BNO055.h}"$
 を用いる．また，姿勢角度，角速度および磁力の記録にはSDカードを用いており，
 seeed studio社製のSD Card shield V4.0をArduinoに装着している．
+Arduinoに書き込んだコードは，付録A.2に記す．
 センサから取得した角度，角速度および磁気のデータを用いて，フィードバック制御を行う．
 記録した角度・角速度のデータをCSVファイルに保存，それをPythonでグラフに描画し，姿勢角度の遷移を確認する．
 実験システムの概要をブロック図にしたものを図\ref{fig:systemblock}に示す．
@@ -100,26 +110,41 @@ ArduinoからのPWM信号が2SK4017のゲートに入力され，PWMがONのと�
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.3]{./figure/回路図1.png}
+		\includegraphics[scale=0.25]{./figure/回路図1.png}
 		\caption{初期の磁気トルカの駆動回路}
 		\label{fig:cirkit1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.3]{./figure/scope_5.png}
-		\caption{初期案}
+		\includegraphics[scale=0.25]{./figure/scope_5.png}
+		\caption{初期の駆動回路における磁気トルカに加わる電圧}
 		\label{fig:osiro1}
 \end{figure}
 
 
 　そこで次に，磁気トルカと並列にダイオード（1N4148）を接続することで逆起電力を防止した．
-制作した回路の回路図を図\ref{fig:cirkit}に示す．
+作製した回路の回路図を図\ref{fig:cirkit}に示す．
 具体的には，ON時に磁気トルカに蓄えられたエネルギーを，
 ダイオードを通して閉回路となった磁気トルカの抵抗
 により消費することにより，逆起電力を防ぐ．
 この回路での磁気トルカにかかる電圧を図\ref{fig:osiro2}に示す．
 このように，逆起電力を防ぐことができていることがわかる．
+
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{./figure/駆動回路.png}
+		\caption{改良した磁気トルカの駆動回路}
+		\label{fig:cirkit}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.25]{./figure/scope_11.png}
+		\caption{改良した駆動回路における磁気トルカに加わる電圧}
+		\label{fig:osiro2}
+\end{figure}
 
 \subsubsection{磁気トルカの電流計算など}
 
@@ -141,20 +166,25 @@ ArduinoからのPWM信号が2SK4017のゲートに入力され，PWMがONのと�
 	i(t) = \frac{E\left(1-e^{-\frac{R_L}{L}t_1}\right)}{R_L}e^{-\frac{R_L}{L}(t-t_1)}
 \end{equation}
 
-となる．さらに$t_2$ [s] 経過してONとなり，
+となる．さらに$t_2$ [s] 経過してFETがONになると，
 
 \begin{equation}
-	i(t) = \frac{E\left(1-e^{-\frac{R_L}{L}t_1}\right)e^{-\frac{R_L}{L}(t_2-t_1)}}{R_L}\left(1-e^{-\frac{R_L}{L}(t-t_1-t_2)}\right)
+	i(t) = \frac{E\left(1-e^{-\frac{R_L}{L}t_1}\right)e^{-\frac{R_L}{L}t_2}}{R_L}\left(1-e^{-\frac{R_L}{L}(t-t_1-t_2)}\right)
 \end{equation}
 
-で表される電流の推移をする．ここで用いた$t_1，t_2$をDuty比$D$（$0\leq D\leq1$），PWM周波数$f$を用いて表すと，
+で表される電流の推移をする．ここで，$D，t_1，t_2$の関係は，
+\begin{equation}
+	D = \frac{t_1}{t_1+t_2}
+\end{equation}
+で表される．また，$t_1，t_2$とDuty比$D$（$0\leq D\leq1$），PWM周波数$f=490$~Hz~の関係は，
 \begin{equation}
 	t_1 = \frac{D}{f}，t_2 = \frac{1-D}{f}
 \end{equation}
+となる．
 
 \begin{table}[H]
 	\centering
-	\caption{磁気トルカの等価回路}
+	\caption{磁気トルカの寄生成分}
 	\label{table:torquer2}
 	\begin{tabular}{|c||c|}
 		\hline
@@ -165,33 +195,20 @@ ArduinoからのPWM信号が2SK4017のゲートに入力され，PWMがONのと�
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.3]{./figure/touka.png}
+		\includegraphics[scale=0.15]{./figure/touka.png}
 		\caption{磁気トルカの等価回路}
 		\label{fig:touka}
 \end{figure}
 
 この電流の推移を，図\ref{fig:cirkit}の回路を用いてduty比50\%でシミュレーションしたグラフを図\ref{fig:current50}に示す．
-このように，磁気トルカに電圧E [V] を印加したときの電流を$I_\mathrm{max} [A]$とすると，duty比$D$のPWM信号で磁気トルカを駆動させたとき，
-およその電流を$I(\mathrm{D})=I_\mathrm{max}D~[A]$で近似できる． 
+このように，磁気トルカに電圧$E$~[V]~を印加したときの電流を$I_\mathrm{max}~[\mathrm{A}]~$とすると，duty比$D$のPWM信号で磁気トルカを駆動させたとき，
+およその電流を$I(D)=I_\mathrm{max}D~[\mathrm{A}]~$で近似できる． 
 そのため電流$I$を流したいときは，
 \begin{equation}
 	D=\frac{I}{I_\mathrm{max}}
 \end{equation}
-でDuty比を決定する．
+でDuty比を決定する．なお，$I_\mathrm{max}=\frac{E}{R_L}=\frac{15}{18.3}\approx0.82~\mathrm{mA}~$である．
 
-\begin{figure}[H]
-	\centering
-		\includegraphics[scale=0.3]{./figure/駆動回路.png}
-		\caption{磁気トルカの駆動回路}
-		\label{fig:cirkit}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[scale=0.3]{./figure/scope_11.png}
-		\caption{磁気トルカに加わる電圧}
-		\label{fig:osiro2}
-\end{figure}
 
 \begin{figure}[H]
 	\centering
@@ -200,3 +217,17 @@ ArduinoからのPWM信号が2SK4017のゲートに入力され，PWMがONのと�
 		\label{fig:current50}
 \end{figure}
 
+\subsection{磁束密度の測定結果}
+
+　磁気トルカに電圧を印加し，発生する磁束密度をシロ産業社製のハンディガウスメータMG-501で測定した．
+その結果を図\ref{fig:magnetic_flux_density}に示す．
+今回磁気トルカ駆動用回路に用いた外部電源の電圧は15~V~であるが，図\ref{fig:magnetic_flux_density}の結果から，
+電圧に対する磁束密度の線形性を維持できているのは5~V~近傍までである．
+今回用いたPWM制御のDuty比で表すと約33\%となる．
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.45]{./figure/figure.png}
+		\caption{電圧値に対する磁気トルカの磁束密度}
+		\label{fig:magnetic_flux_density}
+\end{figure}
